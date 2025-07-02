@@ -13,3 +13,4 @@ rootProject.name = "route4k"
 include(":common")
 include(":ktor:client")
 include(":ktor:server")
+include(":ktor")

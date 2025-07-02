@@ -21,7 +21,7 @@ operator fun <R : Any, Q : Any, P : Any> SafeApiWithQueryAndPath<R, Q, P>.invoke
     route.get(urlString) {
         val q = getQuery(queryClass)
         val p = getPathQuery(pathClass)
-        handleRequest<R>(handleResult) {
+        handleRequest(handleResult) {
             block(q, p)
         }
     }
@@ -35,7 +35,7 @@ operator fun <R : Any, Q : Any> SafeApiWithQuery<R, Q>.invoke(
 ) {
     route.get(urlString) {
         val q = getQuery(queryClass)
-        handleRequest<R>(handleResult) {
+        handleRequest(handleResult) {
             block(q)
         }
     }
@@ -49,7 +49,7 @@ operator fun <R : Any, P : Any> SafeApiWithPath<R, P>.invoke(
 ) {
     route.get(urlString) {
         val p = getPathQuery(pathClass)
-        handleRequest<R>(handleResult) {
+        handleRequest(handleResult) {
             block(p)
         }
     }
@@ -62,7 +62,7 @@ operator fun <R : Any> SafeApi<R>.invoke(
     block: suspend RoutingContext.() -> Result<R?>?
 ) {
     route.get(urlString) {
-        handleRequest<R>(handleResult, block)
+        handleRequest(handleResult, block)
     }
 }
 
@@ -75,7 +75,7 @@ operator fun <R : Any, B : Any, Q : Any, P : Any> MutationApiWithQueryAndPath<R,
     route.customMutationBind {
         val q = getQuery(queryClass)
         val p = getPathQuery(pathClass)
-        handleRequest<R>(handleResult) {
+        handleRequest(handleResult) {
             block(q, p, this@invoke)
         }
     }
@@ -89,7 +89,7 @@ operator fun <R : Any, B : Any, Q : Any> MutationApiWithQuery<R, B, Q>.invoke(
 ) {
     route.customMutationBind {
         val q = getQuery(queryClass)
-        handleRequest<R>(handleResult) {
+        handleRequest(handleResult) {
             block(q, this@invoke)
         }
     }
@@ -103,7 +103,7 @@ operator fun <R : Any, B : Any, P : Any> MutationApiWithPath<R, B, P>.invoke(
 ) {
     route.customMutationBind {
         val p = getPathQuery(pathClass)
-        handleRequest<R>(handleResult) {
+        handleRequest(handleResult) {
             block(p, this@invoke)
         }
     }
@@ -116,7 +116,7 @@ operator fun <R : Any, B : Any> MutationApi<R, B>.invoke(
     block: suspend RoutingContext.(MutationApi<R, B>) -> Result<R?>?
 ) {
     route.customMutationBind {
-        handleRequest<R>(handleResult) {
+        handleRequest(handleResult) {
             block(this@invoke)
         }
     }
