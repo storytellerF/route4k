@@ -187,8 +187,3 @@ suspend fun RoutingContext.handleCaughtException(e: Exception) {
         }
     }
 }
-
-context(route: AbstractMutationApi<Resp, Body>)
-suspend inline fun <reified Resp, reified Body> RoutingContext.receiveBody(): Body {
-    return call.receive()
-}
