@@ -16,7 +16,7 @@ dependencies {
     testImplementation("io.ktor:ktor-client-content-negotiation:3.1.3")
     testImplementation("io.ktor:ktor-serialization-kotlinx-json:3.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
-    testImplementation("ch.qos.logback:logback-classic:1.5.6")
+    testImplementation("ch.qos.logback:logback-classic:1.5.13")
 }
 
 tasks.test {
